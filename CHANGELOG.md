@@ -1,5 +1,69 @@
 # Release Notes
 
+## 1.4.1 (10-12-2020)
+
+- Fixed color provider bug on matching wrong strings [260](https://github.com/styled-components/vscode-styled-components/pull/260)
+- npm script postinstall should use prepare [253](https://github.com/styled-components/vscode-styled-components/pull/253)
+
+## 1.4.0 (05-12-2020)
+
+- Updated CONTRIBUTING.md for how to use regexes and how to debug [251](https://github.com/styled-components/vscode-styled-components/pull/251)
+- Allow destructuring property arrow function [250](https://github.com/styled-components/vscode-styled-components/pull/250)
+- Updated color provider to better support colors in CSS [249](https://github.com/styled-components/vscode-styled-components/pull/249)
+
+## 1.3.0 (18-11-2020)
+
+- Added support for astroturf `stylesheet` (Thanks @mikestopcontinues) [245](https://github.com/styled-components/vscode-styled-components/pull/245)
+
+## 1.2.0 (19-10-2020)
+
+- Addition of the color picker [239](https://github.com/styled-components/vscode-styled-components/pull/239)
+- Fix `.extend` grammar [240](https://github.com/styled-components/vscode-styled-components/pull/240)
+
+## 1.1.0 (15-10-2020)
+
+- Allows spaces before function call parenthesis (fixes ESLint `func-call-spacing`) [238](https://github.com/styled-components/vscode-styled-components/pull/238)
+- Supports function calls inside of `styled` [237](https://github.com/styled-components/vscode-styled-components/pull/237)
+
+## 1.0.0 (09-10-2020)
+
+- We're 1.0.0!
+- We have a more stable test system, moving to Github actions
+- Support added for more type parameters [236](https://github.com/styled-components/vscode-styled-components/pull/236)
+- Addition of completion provider [232](https://github.com/styled-components/vscode-styled-components/pull/232)
+- Contribution Guide added [223](https://github.com/styled-components/vscode-styled-components/pull/223)
+- TS Generics support for `.attr` syntax
+- Single line comments now supported
+- Fixed issue with `aspect-ratio` not working [190](https://github.com/styled-components/vscode-styled-components/issues/190)
+
+As it's Hacktoberfest we appreciate any contributions and have plenty of issues to work on, [take a look](https://github.com/styled-components/vscode-styled-components/issues)
+
+## 0.0.31
+
+- support custom-at-rules [230](https://github.com/styled-components/vscode-styled-components/pull/230), thanks to @vxna
+
+## 0.0.30
+
+- support .withConfig() [225](https://github.com/styled-components/vscode-styled-components/pull/225), thanks to @auver
+
+## 0.0.29
+
+- Fix release issue
+
+## 0.0.28
+
+- fix for space before <type>, thanks to @mrGibi
+
+## 0.0.27
+
+- Add support for css prop [#173](https://github.com/styled-components/vscode-styled-components/pull/173), thanks to @njdancer
+- Update typescript-styled-plugin [#195](https://github.com/styled-components/vscode-styled-components/pull/195), thanks to @mjbvz
+
+## 0.0.26
+
+- Enable plugin with workspace version by default, thanks to @mjbvz
+- Add support for TypeScript type parameters, thansk to @antoinerousseau
+
 ## 0.0.25
 
 - Fix [#137](https://github.com/styled-components/vscode-styled-components/issues/137), thanks to @jbm1991

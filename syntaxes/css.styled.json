@@ -30,6 +30,12 @@
       "include": "#at_rule_supports"
     },
     {
+      "include": "#at_rule_custom_single"
+    },
+    {
+      "include": "#at_rule_custom"
+    },
+    {
       "match": ";",
       "name": "punctuation.terminator.rule.css"
     },
@@ -208,6 +214,9 @@
               "include": "#comment_block"
             },
             {
+              "include": "#comment_line"
+            },
+            {
               "match": "\\b(only)\\b",
               "name": "keyword.control.operator.css.scss"
             },
@@ -326,6 +335,69 @@
         }
       ]
     },
+    "at_rule_custom_single": {
+      "begin": "(?i)(?=@[\\w-]+[^;]+;s*$)",
+      "end": "(?<=;)(?!\\G)",
+      "patterns": [
+        {
+          "begin": "(?i)\\G(@)[\\w-]+",
+          "beginCaptures": {
+            "0": {
+              "name": "keyword.control.at-rule.css"
+            },
+            "1": {
+              "name": "punctuation.definition.keyword.css"
+            }
+          },
+          "end": ";",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.terminator.rule.css"
+            }
+          },
+          "name": "meta.at-rule.header.css"
+        }
+      ]
+    },
+    "at_rule_custom": {
+      "begin": "(?i)(?=@[\\w-]+(\\s|\\(|{|/\\*|$))",
+      "end": "(?<=})(?!\\G)",
+      "patterns": [
+        {
+          "begin": "(?i)\\G(@)[\\w-]+",
+          "beginCaptures": {
+            "0": {
+              "name": "keyword.control.at-rule.css"
+            },
+            "1": {
+              "name": "punctuation.definition.keyword.css"
+            }
+          },
+          "end": "(?=\\s*[{;])",
+          "name": "meta.at-rule.header.css"
+        },
+        {
+          "begin": "{",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.begin.bracket.curly.css"
+            }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.end.bracket.curly.css"
+            }
+          },
+          "name": "meta.at-rule.body.css",
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
     "comment_block": {
       "begin": "/\\*",
       "beginCaptures": {
@@ -340,6 +412,16 @@
         }
       },
       "name": "comment.block.scss"
+    },
+    "comment_line": {
+      "begin": "//",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.scss"
+        }
+      },
+      "end": "\\n",
+      "name": "comment.line.scss"
     },
     "constant_important": {
       "match": "!important",
@@ -637,6 +719,9 @@
         },
         {
           "include": "#comment_block"
+        },
+        {
+          "include": "#comment_line"
         }
       ]
     },
@@ -692,6 +777,9 @@
           "patterns": [
             {
               "include": "source.css#property-names"
+            },
+            {
+              "include": "source.css#media-features"
             }
           ]
         },

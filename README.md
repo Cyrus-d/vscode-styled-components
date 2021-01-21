@@ -24,10 +24,15 @@ It should be the top result.
 - Detailed CSS IntelliSense while working in styled strings.
 - Syntax error reporting.
 
-> **❗Important**: IntelliSense and language support requires VS Code 1.20+.
-
 ## Usage
 
-The styled-components extension adds highlighting and IntelliSense for styled-component template strings in JavaScript and TypeScript. It works out of the box when you use VS Code's built-in version of TypeScript.
+The styled-components extension adds highlighting and IntelliSense for styled-component template strings in JavaScript and TypeScript. See [plugin configuration](https://github.com/Microsoft/typescript-styled-plugin#configuration) for information on configuring the linter and other language features.
 
-If you are [using a workspace version of typescript](https://code.visualstudio.com/Docs/languages/typescript#_using-newer-typescript-versions), you must currently configure the TS Server plugin manually by following [these instructions](https://github.com/Microsoft/typescript-styled-plugin#usage)
+## Raising an issue
+
+Please check the issues list to see if it has already been raised. If it has you can vote on it with a thumbsUp emoji.  
+Issues with the most votes tend to be prioritised.
+
+## Contributing
+
+see [Contributing](./CONTRIBUTING.md)

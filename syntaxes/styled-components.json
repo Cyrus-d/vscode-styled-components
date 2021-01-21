@@ -4,7 +4,7 @@
   "patterns": [
     {
       "contentName": "source.css.scss",
-      "begin": "(?:([\\s\\S][sS][tT][yY][lL][eE][dD](?:<[_$[:alpha:]][_$[[:alnum:][, '\"]]]+>)?(?:\\.[_$[:alpha:]][_$[:alnum:]]*|\\(['\"][_$[:alpha:]][_$[:alnum:]]*['\"]\\)|\\([_$[:alpha:]][_$\\.[:alnum:]]*(?:\\s+as\\s+.*?)?\\)))|(css|keyframes|injectGlobal|createGlobalStyle))\\s*(`)",
+      "begin": "(?:([\\s\\S][sS][tT][yY][lL][eE][dD](?:<.+>(?=\\())?(?:\\.[_$[:alpha:]][_$[:alnum:]]*|\\s*\\(['\"][_$[:alpha:]][_$[:alnum:]]*['\"]\\)|\\s*\\((.+)\\))(?:\\s*<.+>)?\\(?)|(css|keyframes|injectGlobal|createGlobalStyle|stylesheet)(<.+>)?)\\s*(\\([\\{\\}\\w,\\:\\s]+?\\)\\s*=>\\s*)?(`)",
       "beginCaptures": {
         "1": {
           "patterns": [
@@ -14,16 +14,40 @@
           ]
         },
         "2": {
-          "name": "entity.name.function.tagged-template.js"
+          "patterns": [
+            {
+              "include": "source.ts#expression"
+            }
+          ]
         },
         "3": {
+          "name": "entity.name.function.tagged-template.js"
+        },
+        "4": {
+          "patterns": [
+            {
+              "include": "source.ts#type-parameters"
+            }
+          ]
+        },
+        "5": {
+          "patterns": [
+            {
+              "include": "source.ts#expression"
+            }
+          ]
+        },
+        "6": {
           "name": "punctuation.definition.string.template.begin.js string.template.js"
         }
       },
-      "end": "`",
+      "end": "(`)(\\))?",
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.string.template.end.js string.template.js"
+        },
+        "2": {
+          "name": "meta.brace.round.js source.js"
         }
       },
       "patterns": [
@@ -34,15 +58,28 @@
     },
     {
       "contentName": "source.css.scss",
-      "begin": "(\\.)(extend)(`)",
+      "begin": "(.+)(\\.)(extend)(`)",
       "beginCaptures": {
         "1": {
-          "name": "punctuation.accessor.js"
+          "patterns": [
+            {
+              "include": "source.ts#var-expr"
+            },
+            {
+              "include": "source.ts#object-literal"
+            },
+            {
+              "include": "source.ts#object-member"
+            }
+          ]
         },
         "2": {
-          "name": "entity.name.function.tagged-template.js"
+          "name": "punctuation.accessor.js"
         },
         "3": {
+          "name": "entity.name.function.tagged-template.js variable.other.property.js"
+        },
+        "4": {
           "name": "punctuation.definition.string.template.begin.js string.template.js"
         }
       },
@@ -119,7 +156,7 @@
       ]
     },
     {
-      "begin": "(?:([\\s\\S][sS][tT][yY][lL][eE][dD](?:<[_$[:alpha:]][_$[:alnum:]]+>)?(?:\\.[_$[:alpha:]][_$[:alnum:]]*|\\(['\"][_$[:alpha:]][_$[:alnum:]]*['\"]\\)|\\([_$[:alpha:]][_$\\.[:alnum:]]*(?:\\s+as\\s+.*?)?\\)))|(\\.)(extend))(?=\\.attrs\\s*\\()",
+      "begin": "(?:([\\s\\S][sS][tT][yY][lL][eE][dD](?:<[_$[:alpha:]][_$[:alnum:]]+>)?(?:\\.[_$[:alpha:]][_$[:alnum:]]*|\\(['\"][_$[:alpha:]][_$[:alnum:]]*['\"]\\)|\\([_$[:alpha:]][_$\\.[:alnum:]]*(?:\\s+as\\s+.*?)?\\)))|(\\.)(extend))(?=\\.(attrs|withConfig)\\s*(?:<.+>)?\\s*\\()",
       "beginCaptures": {
         "1": {
           "patterns": [
@@ -159,6 +196,38 @@
         },
         {
           "include": "source.ts#expression"
+        }
+      ]
+    },
+    {
+      "contentName": "source.css.scss",
+      "begin": "\\s*(css)(=)(\\{)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "entity.other.attribute-name.jsx"
+        },
+        "2": {
+          "name": "keyword.operator.assignment.jsx"
+        },
+        "3": {
+          "name": "punctuation.section.embedded.begin.jsx"
+        },
+        "4": {
+          "name": "punctuation.definition.string.template.begin.jsx string.template.js"
+        }
+      },
+      "end": "(`)(\\})\\s*",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.template.end.jsx string.template.js"
+        },
+        "2": {
+          "name": "punctuation.section.embedded.end.jsx"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css.styled"
         }
       ]
     }
